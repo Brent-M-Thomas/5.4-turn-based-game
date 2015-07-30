@@ -1,0 +1,23 @@
+{
+  "name": "5.4-turn-based-game",
+  "version": "0.0.0",
+  "authors": [
+    "Brent Thomas <brentmt24@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "backbone": "~1.2.1",
+    "neat": "~1.7.2",
+    "handlebars": "~3.0.3",
+    "jquery": "~2.1.4",
+    "reset-css": "~2.0.2011012602",
+    "underscore": "~1.8.3"
+  }
+}
