@@ -4,17 +4,35 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="app.css">
-    <title></title>
+    <title>Battle</title>
 </head>
 <body>
-    <div class="title-screen"><!-- should disappear after being clicked --></div>
-    <div class="narration-window"><!-- describes the action taking place during the current turn --></div>
-    <div class="enemy-side"><!-- should be on the left side -->
+    <div class="game-screen">
+        <!-- <div class="title-screen">should disappear after being clicked</div> -->
+        <div class="combat narration-window">describes the action taking place during the current turn</div>
+        <div class="combat enemy-side">
+            <p class="enemy-name">Alliance Soldier</p>
+            <img src="http://i198.photobucket.com/albums/aa160/pennausamike/trainjob190.jpg" alt="Picture of Alliance Soldiers">
+            <div class="health-bar"></div>
 
+        </div>
+        <div class="combat hero-side">
+            <div class="options-menu">
+
+            </div>
+            <div class="hero-data">
+                <p class="name">Mal</p>
+                <img src="http://photos1.blogger.com/img/122/2967/320/Malcolm%20Reynolds.jpg" alt="Picture of Mal">
+                <div class="health-bar"></div>
+            </div>
+            <div class="turn-sequence"></div>
+
+        </div>
     </div>
-    <div class="hero-side"><!-- should be on the right side -->
 
-    </div>
 
+<script src="vendor.js"></script>
+
+<script src="app.js"></script>
 </body>
 </html>

@@ -13,6 +13,7 @@
     "broccoli-funnel": "^0.2.3",
     "broccoli-handlebars-precompiler": "^0.1.1",
     "broccoli-merge-trees": "^0.2.2",
+    "broccoli-sass": "^0.6.6",
     "broccoli-sourcemap-concat": "^1.0.1",
     "sass": "^0.5.0"
   }
