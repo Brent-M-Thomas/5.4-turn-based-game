@@ -22,10 +22,12 @@ html {
     background: $theme-color1;
     min-height: 100%;
     position: relative;
+    // display: none;
 }
 .title-screen {
     background-image: url(http://static.playertheory.com/images/FireFlyHero.png);
     width: 100%;
+    display: none;
 }
 .character-select li {
     display: inline-block;

@@ -3,11 +3,22 @@ var weapon1 = $('.weapon1');
 var weapon2 = $('.weapon2');
 var special = $('.special');
 
-var heroes = [Mal];
+var heroes = [mal];
 var enemies = [allianceSoldier];
+
+var gameOver = function() {
+  if (heroes.length < 1 && enemies.length >= 1) {
+    logWindow.html('You Lose!');
+  } else if (enemies.length < 1 && heroes.length >= 1) {
+    logWindow.html('You Win!');
+  } else {
+    logWindow.append('The battle continues...');
+  }
+};
+
 function Game() {
-  this.on(takeTurnWithWeapon, function() {
-    enemies[1].trigger(attacked);
+  this.on('takeTurnWithWeapon', function() {
+    heroes[0].attack(enemies[0]);
   });
 
 }

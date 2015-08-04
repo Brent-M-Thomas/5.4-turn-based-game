@@ -1,11 +1,12 @@
 // end turn after  attack
+var logWindow = $('.narration-window');
 
 function Character(options) {
   options = options || {};
   var hitPoints = options.hitPoints || 100;
   this.weapons = options.weapons || {};
   this.logDamage = function(damage) {
-    '.narration-window'.html(this + 'takes' + damage + 'points of damage');
+    logWindow.html(this + 'takes' + damage + 'points of damage');
   };
 
   this.takeDamage = function(damage) { hitPoints -=  damage; };
@@ -21,6 +22,8 @@ function Character(options) {
   this.on('attacked', function(amount) {
     this.takeDamage(amount);
     this.logDamage(amount);
+    this.isDead();
+
   });
 
   this.getHealth = function() {return hitPoints;};
@@ -34,10 +37,22 @@ Hero.prototype = _.extend({
 
   attack: function(hostile, weapon) {
     hostile.trigger('attacked', this.getAttackStrength(weapon));
+  },
+
+  isDead: function() {
+    if (heroes[0].hitPoints <= 0) {
+      heroes.shift();
+      gameOver();
+    } else if (enemies[0].hitPoints <= 0) {
+      enemies.shift();
+      gameOver();
+    } else {
+      logWindow.append(this + 'exclaims \"Go shi\!  That hurt\!\"  ');
+    }
   }
 }, Backbone.Events);
 
-Mal = new Hero({
+var mal = new Hero({
   maxHitPoints: 120,
   hitPoints: 120,
   weapons: {sidearm: 15, fist: 5},
@@ -49,7 +64,7 @@ Mal = new Hero({
   nickname: 'Mal'
 });
 
-Jayne = new Hero({
+var jayne = new Hero({
   maxHitPoints: 80,
   hitPoints: 80,
   weapons: {gun: 25, fist: 8},
@@ -61,7 +76,7 @@ Jayne = new Hero({
   nickname: 'Jayne'
 });
 
-Zoe = new Hero({
+var zoe = new Hero({
   maxHitPoints: 100,
   hitPoints: 100,
   weapons: {maresLeg: 20, stockStrike: 8},
@@ -81,17 +96,25 @@ Enemy.prototype = _.extend({
 
   attack: function(hostile, weapon) {
     hostile.trigger('attacked', this.getAttackStrength(weapon));
+  },
+
+  isDead: function() {
+    if (this.hitPoints <= 0) {
+      enemies.shift();
+    } else {
+      logWindow.append(this + 'exclaims \"Go shi\!\"  ');
+    }
   }
 }, Backbone.Events);
 
-allianceSoldier = new Enemy({
+var allianceSoldier = new Enemy({
   maxHitPoints: 80,
   hitPoints: 80,
   image:'http://i198.photobucket.com/albums/aa160/pennausamike/trainjob190.jpg',
   weapons: {Rifle: 10}
 });
 
-Reaver = new Enemy({
+var reaver = new Enemy({
   maxHitPoints: 60,
   hitPoints: 60,
   image:'http://www.toymania.com/news/images/0905_dst_reaver1_sm.jpg',
