@@ -23,6 +23,14 @@ html {
     min-height: 100%;
     position: relative;
 }
+.title-screen {
+    background-image: url(http://static.playertheory.com/images/FireFlyHero.png);
+    width: 100%;
+}
+.character-select li {
+    display: inline-block;
+    text-align: center;
+}
 
 .narration-window {
     position: absolute;
