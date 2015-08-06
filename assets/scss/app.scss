@@ -1,0 +1,120 @@
+@import 'reset';
+@import 'bourbon';
+@import 'neat';
+$theme-color1: black;
+$theme-color2: white;
+$theme-color3:#A1B9E5;
+
+
+html, body{
+    height: 100%;
+    width: 100%;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.game-screen {
+    background: $theme-color1;
+    min-height: 100%;
+    position: relative;
+    // display: none;
+}
+.title-screen {
+    background-image: url(http://static.playertheory.com/images/FireFlyHero.png);
+    width: 100%;
+    display: none;
+}
+.character-select li {
+    display: inline-block;
+    text-align: center;
+}
+
+.narration-window {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    border-radius: 6px;
+    border: 4px solid $theme-color2;
+    font-size: 2.5rem;
+    font-family: monospace;
+    font-weight: 800;
+    color: $theme-color2;
+}
+
+.enemy-side {
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    width: 60%;
+    height: 80%;
+    border-radius: 6px;
+    border: 4px solid $theme-color2;
+    font-size: 2rem;
+    font-family: monospace;
+    font-weight: 800;
+    color: $theme-color2;
+    img {
+        width: 50%;
+        position: absolute;
+        right: 25%;
+    }
+    p {
+        text-align: center;
+    }
+}
+
+.hero-side {
+    text-align: center;
+    position: absolute;
+    top: 20%;
+    right: 0%;
+    width: 40%;
+    height: 80%;
+    border-radius: 6px;
+    border: 4px solid $theme-color2;
+    font-size: 2.5rem;
+    font-family: monospace;
+    font-weight: 800;
+    color: $theme-color2;
+}
+.hero-data {
+    float: right;
+    width: 49%;
+}
+.health-bar-max {
+    background: red;
+    width: 85%;
+    height: 1.5rem;
+    border-radius: 5px;
+    border: 2px solid $theme-color2;
+    position: relative;
+    left: 1rem;
+}
+.health-bar-current {
+    background: green;
+    width: 100%;
+    height: 1.5rem;
+    border-radius: 5px;
+    border-top: 2px solid $theme-color2;
+    border-left: 2px solid $theme-color2;
+    border-bottom: 2px solid $theme-color2;
+    position: absolute;
+    top: -1px;
+    left: -1px;
+}
+.options-menu {
+    float: left;
+    width: 49%;
+    font-size: 1.5rem;
+    li {
+        padding: .5rem;
+        border: 3px solid $theme-color3;
+    }
+}
+
+

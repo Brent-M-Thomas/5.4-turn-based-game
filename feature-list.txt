@@ -1,0 +1,12 @@
+- The user should be able to see the Hero info
+- The game should have a hero and an enemy
+- A Hero should have [health, name, attack, picture]
+- An enemy should have [health, name, attack, picture]
+- The game should have multiple player and enemy types
+- The game should be able to tell when a player or enemy is defeated
+- The game should have turns
+- A user should be able to make a Hero take action
+- An enemy should attack automatically
+- a User should be able to select a player type
+- A user should see Hero health, combat options, enemy name and enemay health bar in battle
+- A user shold be able to see an end game screen

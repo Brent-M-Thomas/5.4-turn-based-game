@@ -4,17 +4,55 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="app.css">
-    <title></title>
+    <title>Battle</title>
 </head>
 <body>
-    <div class="title-screen"><!-- should disappear after being clicked --></div>
-    <div class="narration-window"><!-- describes the action taking place during the current turn --></div>
-    <div class="enemy-side"><!-- should be on the left side -->
-
+    <div class="title-screen">
+        <div class="character-select">
+            <p>Choose a crewmember</p>
+            <button id="mal">Cpt. Malcolm Reynolds</button>
+            <button id="zoe">Zoe Alleyne Washburn</button>
+            <button id="jayne">Jayne "Hero of Canton" Cobb</button>
+            <button id="all-three">All Three</button>
+        </div>
     </div>
-    <div class="hero-side"><!-- should be on the right side -->
+    <div class="game-screen">
+        <div class="combat narration-window">describes the action taking place during the current turn</div>
+        <div class="combat enemy-side">
+            <p class="enemy-name">Alliance Soldier</p>
+            <img src="http://i198.photobucket.com/albums/aa160/pennausamike/trainjob190.jpg" alt="Picture of Alliance Soldiers">
+            <div class="health-bar"></div>
 
+        </div>
+        <div class="combat hero-side">
+            <div class="options-menu">
+            <ul>
+                <li>
+                    <ul>
+                        <li>Weapons:</li>
+                        <li class="weapon1">Sidearm</li>
+                        <li class="weapon2">Fist</li>
+                    </ul>
+                </li>
+            </ul>
+
+            </div>
+            <div class="hero-data">
+                <p class="name">Mal</p>
+                <img src="http://photos1.blogger.com/img/122/2967/320/Malcolm%20Reynolds.jpg" alt="Picture of Mal">
+                <div class="health-bar-max">
+                <div class="health-bar-current"></div>
+
+                </div>
+            </div>
+            <div class="turn-sequence"></div>
+
+        </div>
     </div>
 
+
+<script src="vendor.js"></script>
+
+<script src="app.js"></script>
 </body>
 </html>
