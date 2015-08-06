@@ -2,40 +2,77 @@
 var weapon1 = $('.weapon1');
 var weapon2 = $('.weapon2');
 var special = $('.special');
+var healthBar = $('.health-bar-current');
 
 var heroes = [mal];
+mal.takeDamage(10);
 var enemies = [allianceSoldier];
-
-var gameOver = function() {
-  if (heroes.length < 1 && enemies.length >= 1) {
-    logWindow.html('You Lose!');
-  } else if (enemies.length < 1 && heroes.length >= 1) {
-    logWindow.html('You Win!');
-  } else {
-    logWindow.append('The battle continues...');
-  }
+var healthPct = function(character) {
+  return character.getHealth() / character.maxHitPoints * 100 ;
 };
 
 function Game() {
-  this.on('takeTurnWithWeapon', function() {
-    heroes[0].attack(enemies[0]);
-  });
+  this.on('takeTurnWithWeapon', function(weaponIndex) {
+    heroes[0].attack(enemies[0], weaponIndex);
+    this.checkEnemyDead();
+    enemies[0].attack(heroes[0]);
+    this.checkHeroDead();
 
+    this.trigger('change');
+  });
 }
 
-//need to remember to remove characters from array once defeated
-// end turn after attack function
+Game.prototype = _.extend({
+  constructor: Game,
+  checkEnemyDead: function() {
+    if (enemies[0].isDead === true) {
+      enemies.shift();
+      game.trigger('change'); /*is this right?*/
+    } else {
+      return;
+    }
+  },
 
-var takeTurnWithWeapon = function(weaponIndex) {
+  checkHeroDead: function() {
+    if (heroes[0].isDead === true) {
+      heroes.shift();
+      game.trigger('change'); /*is this right?*/
+    } else {
+      return;
+    }
+  },
 
-};
+  gameOver: function() {
+    if (enemies.length <= 0) {
+      this.heroWins = true;
+    }
+
+    return this.heroWins || heroes.length <= 0;
+  }
+}, Backbone.Events);
+
+var game = new Game();
+
+game.on('change', function() {
+  healthBar.css('width', (healthPct(heroes[0]) + '%'));
+  if (!game.gameOver()) {
+    logWindow.append('The battle continues...');
+    return;
+  }
+
+  if (game.heroWins) {
+    logWindow.html('You Win!');
+  } else {
+    logWindow.html('You Lose!');
+  }
+});
 
 weapon1.on('click', function() {
-  takeTurnWithWeapon(0);
+  game.trigger('takeTurnWithWeapon', 0);
 });
 
 weapon2.on('click', function() {
-  takeTurnWithWeapon(1);
+  game.trigger('takeTurnWithWeapon', 1);
 });
 
 // function heroTurn(heroturn) {
